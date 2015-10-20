@@ -1,0 +1,36 @@
+DictionaryForMids Built with Vimod-Pub
+
+This build environment is meant for people wishing to produce dictionaries for 
+multiple languages and those in different sizes.
+
+When we use "iso" we mean the three letter ISO or Ethnologue code.
+
+The input file for this process is an xml file output from Toolbox in either 
+PLB or MDF schema. Or you can export a LIFT XML file from Field Works Language 
+Explorer. The wordlist version can use a direct LIFT to DFM input conversion 
+but the other outputs need to be converted from LIFT to MDF schema then to 
+DFM. The source XML can be copied from another place on your computer or you can 
+just put it in the project path. The file if in MDF schema should be named 
+iso.xml
+
+Four sizes of dictionary can built.
+Wordlist: Just the lexeme and the indexes in other languages.
+Minimal. Dictionay lacking example sentences
+Mid sized. Full dictionary
+Full sized. Full dictionary with indexing on example vernacular sentences.
+
+Size comparison for a 5500 word dictionary with four languge indexes 
+i.e. Eng, nat, reg, reg2
+
+wl          602kB
+min         816kB
+mid        1081kB
+full       2227kB   
+
+The XSLT transformation sheets can be modified for any code set. The standard 
+ones are for Philippines codes but MDF inputs are handled at a basic level.
+
+Ian McQuay
+ian_mcquay@sil.org
+
+

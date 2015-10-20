@@ -1,0 +1,24 @@
+# project.tasks
+schema type                             ;var schema mdf
+iso code                                ;var iso "xxx"
+languages                               ;var langs "3"
+title                                   ;var voltitle "xlang-English-Tagalog Dictionary"
+languages                               ;var langname "xlang"
+languages                               ;var langname2 "English"
+languages                               ;var langname3 "Tagalog"
+languages                               ;var langname4 ""
+languages                               ;var compiler "A Compiler"
+Publisher                               ;var publisher "© ????"
+publication date                        ;var pubdate "2015"
+second language                         ;var iso2 "eng"
+third language                          ;var iso3 "tgl"
+third language                          ;var iso4 ""
+sourcefile                              ;var liftfile "%projectpath%\%iso%.lift"
+mdf xml file                            ;var xmlfile "%projectpath%\%iso%.xml"
+vernacular                              ;var vernacular "%iso%"
+nationl lang code                       ;var national "tl"
+regional lang code                      ;var regional ""
+regional2 lang code                     ;var regional2 ""
+regional3 lang code                     ;var regional3 ""
+
+create project.xslt                     ;projectxslt

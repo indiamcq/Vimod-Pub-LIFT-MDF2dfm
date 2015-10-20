@@ -1,0 +1,653 @@
+; PSPad clip definition file for vimod
+; author:  mcquayi
+; last revision 21. Aug 2013  20:16
+;
+; @-- = Separator  
+; @C = Combo box  
+; @D = Date dialog  
+; @E = Text box  
+; @F = Font selection dialog  
+; @K = Checkbox  
+; @L = Colour picker dialog  
+; @O = File Open dialog  
+; @P = Picture selection dialog  
+; @S = Directory selection dialog  
+; @T = Topstyle  
+; %control%=@E caption,text,default,options,delimiter,dialog_type  
+ 
+
+[Macro definition]
+%dquote%=@E Double quote (required don't touch),,",,,
+%xsltscript%=@C xslt script (required),,,"attrib-set-temp";"blank.xml";"check-count-fields-prehtml";"compare-fields";"css-to-attrib-set";"css-to-class-set";"dict-custom-collation";"dict-fo-root-test";"dict-sort-with-custom-collation-option";"dict-xml2fo-test1";"elem4js";"fo-A4-first-left-right-pageset.xsl";"fo-entities-header.xsl";"fo-generate-bookmarks";"fo-letter-first-left-right-pageset.xsl";"fo-one page-layout";"fo-toc";"generate-fo-attrib-set";"generate-fo-class-attribs";"generate-fo-template";"generate-match-func2";"generic-add-following-to-group";"generic-add-preceding-to-group";"generic-before-after-replace";"generic-find-replace-in-nodes";"generic-grouping-inside-list";"generic-grouping-start-with-list";"generic-grouping-with-exclude";"generic-group-pair";"generic-group-serial-node";"generic-group-serial-nodes";"generic-group-trio";"generic-html";"generic-html.xsl";"generic-new-group-select";"generic-nodetext-translate";"generic-remove-nodes";"generic-reorder-fields";"generic-split-string-for-nodes";"generic-tsv-to-xml";"generic-xhtml4fo";"group-adjacent-with-same-name";"group-on-x-after-pregroup.xsl";"inc-char-map-silp";"inc-copy-anything";"inc-css-common-param";"inc-dict-PWxhtml-control-maker";"inc-dict-sense-hom";"inc-find-replace";"inc-four-controls-lists";"inc-generic-html";"inc-generic-html-with-match-func";"inc-html-table";"inc-html-table-head";"inc-list2xml";"inc-list2xml-1ele2attb";"inc-list2xml-2elevalue";"inc-list2xml-elevalue";"inc-lower-remove-accents";"inc-nav-links";"inc-remove-square-brackets";"inc-scr-html5-write-page";"index2split-html";"Index-group-n-sort";"js-lx";"kmk-vocab2-html";"kmk-vocabintro-html";"lxGroup-no-mn";"mark-sense-in-fields";"MDF2PWxhtml";"MDF-PWclass";"MDF-PWlang";"MDF-PWmatch";"mdf-type.xml";"normalizeallspace";"Paragraphtext2xmll";"PWxhtml2DFM";"PWxhtml2DFM2";"reap-build";"reap-group";"reap-select";"reap-subdir";"remove-node";"sfm2xml-dict";"sfm2xml-dict2";"sfm2xml-general";"tab-css2attribset";"tab-css2css";"tab-css2css-match";"tab-css2xml";"temp-fo-class-attribs";"temp-match";"test-css-to-attrib-set";"testing-Manuscripter-import1.xsl";"toc";"toc-cookbook";"toc-pittman";"toc-pittman2";"usfm-chap-before-after";"usx2dbs_index";"usx2dbs_index.xsl";"usx2dbs_iso";"usx2usxsimp";"usx-add-text-wrapper";"usxsimp2dbs";"usx-verse-text-elem";"vimod-spinoff-project";"vocab2-match";"vocab-intro-match";"xhtml2fo";"xhtml-add-class2xml";"xhtml-add-class2xml1";"xhtml-to-xslfo.xsl";"XlingPaper-split-interlin-line";"xml2PW-xhtml",
+%doucumenttask%=@E Document task (recommended),,doc,
+%setvariablek%=@E Document task (recommended),,set variable,
+%params%=@E Parameters (depends on stylesheet),,,,
+%input%=@O Input file (normally not needed),,,,"
+%inputreq%=@O Input file (required),,,,"
+%output%=@O Output file (normally not needed),,,,"
+%outputreq%=@O Output file (required),,,,"
+%cctscripts%=@C CC Table (required; comma sep if more than one),,,"bb-verse-numb.cct";"change-nbsp.cct";"cssBreakOnEndBrace.cct";"dquote2single.cct";"fix_wedge_quotes.cct";"fix-wedge-quotes.cct";"fix-wedge-quotes-in-xml.cct";"fn-fix.cct";"footnotes2xml.cct";"g-text.cct";"ifb-prexml.cct";"index4App.cct";"index-eng.cct";"index-ver.cct";"inline2xmlv2.cct";"inline2xmlv2.cct.bak";"inline-subscript2xml.cct";"LP-fix.cct";"ptu-quote-change.cct";"reap-csv2tsv.cct";"reap-fix-csv.cct";"reap-line1-csv.cct";"removeCRLF.cct";"removeFirstLine.cct";"removeXHTMLheaders.cct";"strip-nl.cct";"vag-char-map.cct",,,
+%varname%=@E Variable name,,,,,
+%varvalue%=@E Variable value,,,,,
+%tasklist%=@O Enter tasklist file (requird),,,C files (*.tasks)|*.tasks,,  
+%menu%=@O Select another menu (required),,,,,R\  
+%outpath%=@S Select output path (required),,,,,
+%resources%=@C Select resources to copy (required),,,"resources";"resources\browserbible";"resources\ParatextIntergration";"resources\simplehtmlscr";"resources\spinoff-project",
+;
+;
+[xslt | Generic xslt transformation, must select a script]
+%doucumenttask%               ;xslt %xsltscript% %params% %input% %output%
+;
+[cct | Consistent Changes Tables ]
+%doucumenttask%               ;cct %cctscripts%  %input% %output%
+;
+[setvar | Set Variable]
+%setvariable%                 ;setvar %varname% %varvalue%
+;
+[inputfile | Set the starting file for the tasklist]
+set the starting file         ;inputfile %inputreq%
+;
+[outputfile | Rename last output file]
+rename last file output       ;outputfile %outputreq%
+;
+[menu | Call another menu, relative path data\iso\project\setup\filename.menu]
+start menu %documentation%    ;menu %menu%
+;
+[tasklist | Call a tasklist, filename only i.e. mybuild.tasks]
+%doucumenttask%               ;tasklist %tasklist%
+;
+[copyresources | Copy resources files]
+%doucumenttask%               ;copyresources "%resources%\*.*" "%outpath%"
+;
+[spinoffproject | Make an independent project based on this project]
+spin off project                    ;spinoffproject
+;[xadd-curchap-to-chapterGroup | add-curchap-to-chapterGroup]
+%doucumenttask%               ;xslt  add-curchap-to-chapterGroup  ""  %input%  %output%
+;
+[xadd-curchap | add-curchap]
+%doucumenttask%               ;xslt  add-curchap  ""  %input%  %output%
+;
+[xadd-usx-attrib | add-usx-attrib]
+%doucumenttask%               ;xslt  add-usx-attrib  ""  %input%  %output%
+;
+[xattrib-set-temp | attrib-set-temp]
+%doucumenttask%               ;xslt  attrib-set-temp  ""  %input%  %output%
+;
+[xbible-book-func | bible-book-func]
+%doucumenttask%               ;xslt  bible-book-func  "grp1name='1 Old testament' grp2name='2 New testament' grp3name='3 Apocrapha'"  %input%  %output%
+;
+[xcheck-count-fields-prehtml | check-count-fields-prehtml]
+%doucumenttask%               ;xslt  check-count-fields-prehtml  ""  %input%  %output%
+;
+[xcheck-count-fields | check-count-fields]
+%doucumenttask%               ;xslt  check-count-fields  ""  %input%  %output%
+;
+[xcheck-field-to-checklist | check-field-to-checklist]
+%doucumenttask%               ;xslt  check-field-to-checklist  "field='' idlink='' showvalue='yes' css='../common/silpdict.css'"  %input%  %output%
+;
+[xcheck-field-values-summary-list | check-field-values-summary-list]
+%doucumenttask%               ;xslt  check-field-values-summary-list  "fieldlist=''"  %input%  %output%
+;
+[xcheck-field-values-summary | check-field-values-summary]
+%doucumenttask%               ;xslt  check-field-values-summary  "fieldlist='' uripath=''"  %input%  %output%
+;
+[xcheck-make-tab-file | check-make-tab-file]
+%doucumenttask%               ;xslt  check-make-tab-file  "reporttype=''"  %input%  %output%
+;
+[xcheck-ref-against-lx | check-ref-against-lx]
+%doucumenttask%               ;xslt  check-ref-against-lx  "lx=''"  %input%  %output%
+;
+[xcheck-sample-fields-list | check-sample-fields-list]
+%doucumenttask%               ;xslt  check-sample-fields-list  ""  %input%  %output%
+;
+[xcheck-to-css | check-to-css]
+%doucumenttask%               ;xslt  check-to-css  "position='before'"  %input%  %output%
+;
+[xcombine-files-in-dir | combine-files-in-dir]
+%doucumenttask%               ;xslt  combine-files-in-dir  "path='' files=''"  %input%  %output%
+;
+[xcombine-files | combine-files]
+%doucumenttask%               ;xslt  combine-files  "path='' files=''"  %input%  %output%
+;
+[xcompare-fields | compare-fields]
+%doucumenttask%               ;xslt  compare-fields  "field2check='' reference='lx'"  %input%  %output%
+;
+[xcss-class-match | css-class-match]
+%doucumenttask%               ;xslt  css-class-match  ""  %input%  %output%
+;
+[xcss-parser | css-parser]
+%doucumenttask%               ;xslt  css-parser  "sourcetexturi=''"  %input%  %output%
+;
+[xcss-to-attrib-set | css-to-attrib-set]
+%doucumenttask%               ;xslt  css-to-attrib-set  "sourcetexturi='' commonset='normal'"  %input%  %output%
+;
+[xcss-to-class-set | css-to-class-set]
+%doucumenttask%               ;xslt  css-to-class-set  "sourcetexturi='' commonset='normal'"  %input%  %output%
+;
+[xdbs-var | dbs-var]
+%doucumenttask%               ;xslt  dbs-var  ""  %input%  %output%
+;
+[xdict-custom-collation | dict-custom-collation]
+%doucumenttask%               ;xslt  dict-custom-collation  ""  %input%  %output%
+;
+[xdict-fo-root-test | dict-fo-root-test]
+%doucumenttask%               ;xslt  dict-fo-root-test  "title='' page-width='' page-height='' page-margin-top='' page-margin-bottom='' page-margin-left='' page-margin-right='' page-header-margin='' page-footer-margin='' title-print-in-header='' page-number-print-in-footer='' column-count='' column-gap='' default-font-size='' default-font-family='' writing-mode='' text-align='' hyphenate=''"  %input%  %output%
+;
+[xdict-sort-with-custom-collation-option | dict-sort-with-custom-collation-option]
+%doucumenttask%               ;xslt  dict-sort-with-custom-collation-option  "collationname='' secondarysort=''"  %input%  %output%
+;
+[xdict-xml2fo-test1 | dict-xml2fo-test1]
+%doucumenttask%               ;xslt  dict-xml2fo-test1  ""  %input%  %output%
+;
+[xdl-import-filenames | dl-import-filenames]
+%doucumenttask%               ;xslt  dl-import-filenames  "sourcepath='' webpath='' dlgroup=''"  %input%  %output%
+;
+[xelem4js | elem4js]
+%doucumenttask%               ;xslt  elem4js  "primaryfield='' secondaryfields='' backupfield='' arrayno=''"  %input%  %output%
+;
+[xfo-generate-bookmarks | fo-generate-bookmarks]
+%doucumenttask%               ;xslt  fo-generate-bookmarks  ""  %input%  %output%
+;
+[xfo-one-page-layout | fo-one-page-layout]
+%doucumenttask%               ;xslt  fo-one-page-layout  "title='' page-width='' page-height='' page-margin-top='' page-margin-bottom='' page-margin-left='' page-margin-right='' page-header-margin='' page-footer-margin='' title-print-in-header='' page-number-print-in-footer='' column-count='' column-gap='' default-font-size='' default-font-family='' writing-mode='' text-align='' hyphenate=''"  %input%  %output%
+;
+[xfo-toc | fo-toc]
+%doucumenttask%               ;xslt  fo-toc  ""  %input%  %output%
+;
+[xgen2-split-string-for-nodes | gen2-split-string-for-nodes]
+%doucumenttask%               ;xslt  gen2-split-string-for-nodes  "separatorstring=',' sourcetextstring=''"  %input%  %output%
+;
+[xgenerate-fo-attrib-set | generate-fo-attrib-set]
+%doucumenttask%               ;xslt  generate-fo-attrib-set  "sourcetexturi=''"  %input%  %output%
+;
+[xgenerate-fo-class-attribs | generate-fo-class-attribs]
+%doucumenttask%               ;xslt  generate-fo-class-attribs  "sourcetexturi=''"  %input%  %output%
+;
+[xgenerate-fo-template | generate-fo-template]
+%doucumenttask%               ;xslt  generate-fo-template  "pagetemplate='fo-one page-layout.xslt' attribtemplate='attrib-set-temp.xslt' inlineelementlist='' blockelementlist=''"  %input%  %output%
+;
+[xgenerate-match-func | generate-match-func]
+%doucumenttask%               ;xslt  generate-match-func  "fieldlist=''"  %input%  %output%
+;
+[xgenerate-match-func2 | generate-match-func2]
+%doucumenttask%               ;xslt  generate-match-func2  "fieldlist='' defaultelement='div'"  %input%  %output%
+;
+[xgenerate-nav-links-func | generate-nav-links-func]
+%doucumenttask%               ;xslt  generate-nav-links-func  ""  %input%  %output%
+;
+[xgenerate-usx-book-seq-func | generate-usx-book-seq-func]
+%doucumenttask%               ;xslt  generate-usx-book-seq-func  "textfile=''"  %input%  %output%
+;
+[xgeneric-add-following-to-group | generic-add-following-to-group]
+%doucumenttask%               ;xslt  generic-add-following-to-group  "includenode='' groupnode=''"  %input%  %output%
+;
+[xgeneric-add-preceding-to-group | generic-add-preceding-to-group]
+%doucumenttask%               ;xslt  generic-add-preceding-to-group  "includenode='' groupnode=''"  %input%  %output%
+;
+[xgeneric-before-after-replace | generic-before-after-replace]
+%doucumenttask%               ;xslt  generic-before-after-replace  "node='' before='' after=''"  %input%  %output%
+;
+[xgeneric-find-replace-in-nodes | generic-find-replace-in-nodes]
+%doucumenttask%               ;xslt  generic-find-replace-in-nodes  "replacenodeslist=''"  %input%  %output%
+;
+[xgeneric-group-pair | generic-group-pair]
+%doucumenttask%               ;xslt  generic-group-pair  "firstnode='' secondnode='' groupname=concat($firstnode,'Group')"  %input%  %output%
+;
+[xgeneric-group-serial-node | generic-group-serial-node]
+%doucumenttask%               ;xslt  generic-group-serial-node  "serialnode=''"  %input%  %output%
+;
+[xgeneric-group-serial-nodes | generic-group-serial-nodes]
+%doucumenttask%               ;xslt  generic-group-serial-nodes  "serialnodelist=''"  %input%  %output%
+;
+[xgeneric-group-trio | generic-group-trio]
+%doucumenttask%               ;xslt  generic-group-trio  "firstnode='' secondnode='' thirdnode=''"  %input%  %output%
+;
+[xgeneric-grouping-inside-list | generic-grouping-inside-list]
+%doucumenttask%               ;xslt  generic-grouping-inside-list  "groupnode='' parentnodes='' excludelist=''"  %input%  %output%
+;
+[xgeneric-grouping-start-with-list | generic-grouping-start-with-list]
+%doucumenttask%               ;xslt  generic-grouping-start-with-list  "parentnode='' groupnodelist=''"  %input%  %output%
+;
+[xgeneric-grouping-with-exclude | generic-grouping-with-exclude]
+%doucumenttask%               ;xslt  generic-grouping-with-exclude  "parentnode='' groupnode='' excludelist=''"  %input%  %output%
+;
+[xgeneric-html | generic-html]
+%doucumenttask%               ;xslt  generic-html  "precontext='' postcontext='' table='' collabel1='' collabel2='' collabel3='' collabel4='' locref='' cssfile=''"  %input%  %output%
+;
+[xgeneric-new-group-select | generic-new-group-select]
+%doucumenttask%               ;xslt  generic-new-group-select  "node1='' node2='' node3='' node4='' node5='' node6='' node7='' node8='' node9=''"  %input%  %output%
+;
+[xgeneric-nodetext-translate | generic-nodetext-translate]
+%doucumenttask%               ;xslt  generic-nodetext-translate  "node='' match='' replace=''"  %input%  %output%
+;
+[xgeneric-remove-nodes | generic-remove-nodes]
+%doucumenttask%               ;xslt  generic-remove-nodes  "removenodelist=''"  %input%  %output%
+;
+[xgeneric-reorder-fields | generic-reorder-fields]
+%doucumenttask%               ;xslt  generic-reorder-fields  "group='' field1='' field2='' field3='' field4='' field5='' field6=''"  %input%  %output%
+;
+[xgeneric-scv2xml | generic-scv2xml]
+%doucumenttask%               ;xslt  generic-scv2xml  "pathToCSV='file:///c:/csv.csv'"  %input%  %output%
+;
+[xgeneric-split-string-for-nodes | generic-split-string-for-nodes]
+%doucumenttask%               ;xslt  generic-split-string-for-nodes  "separatorstring=';' elementstosplit=''"  %input%  %output%
+;
+[xgeneric-ssv2xml | generic-ssv2xml]
+%doucumenttask%               ;xslt  generic-ssv2xml  "sourcetexturi='' group='item' sepvar2='","' sepvar1='
+'"  %input%  %output%
+;
+[xgeneric-tsv-to-xml | generic-tsv-to-xml]
+%doucumenttask%               ;xslt  generic-tsv-to-xml  "seq='' sourcetexturi='file:///D:/All-SIL-PLB/WebMaster/Publishing/pub-svn/data/ifk/ifk-g01-04.txt' sepvar2='\t' sepvar1='\r\n' sepvar0='\r\n\r\n' root='table' rootclass='' group='tr' groupclass='' data='td' dataclass='td'"  %input%  %output%
+;
+[xgeneric-tsv2xml-with-fieldnamelist | generic-tsv2xml-with-fieldnamelist]
+%doucumenttask%               ;xslt  generic-tsv2xml-with-fieldnamelist  "seq='' fieldnamelist='' sourcefile='' group='item' sepvar1='\r\n' sepvar2='\t'"  %input%  %output%
+;
+[xgeneric-xhtml4fo | generic-xhtml4fo]
+%doucumenttask%               ;xslt  generic-xhtml4fo  "title='' precontext='' postcontext=''"  %input%  %output%
+;
+[xget-eng-words | get-eng-words]
+%doucumenttask%               ;xslt  get-eng-words  ""  %input%  %output%
+;
+[xgroup-adjacent-with-same-name | group-adjacent-with-same-name]
+%doucumenttask%               ;xslt  group-adjacent-with-same-name  "groupnode='' parentnode='' groupname=concat($groupnode,'Group')"  %input%  %output%
+;
+[xinc-char-map-silp | inc-char-map-silp]
+%doucumenttask%               ;xslt  inc-char-map-silp  ""  %input%  %output%
+;
+[xinc-copy-anything | inc-copy-anything]
+%doucumenttask%               ;xslt  inc-copy-anything  ""  %input%  %output%
+;
+[xinc-css-common-param | inc-css-common-param]
+%doucumenttask%               ;xslt  inc-css-common-param  "transto='' transfrom=''"  %input%  %output%
+;
+[xinc-dict-html-4-js | inc-dict-html-4-js]
+%doucumenttask%               ;xslt  inc-dict-html-4-js  ""  %input%  %output%
+;
+[xinc-dict-html-css | inc-dict-html-css]
+%doucumenttask%               ;xslt  inc-dict-html-css  ""  %input%  %output%
+;
+[xinc-dict-link | inc-dict-link]
+%doucumenttask%               ;xslt  inc-dict-link  ""  %input%  %output%
+;
+[xinc-dict-make-control-lists | inc-dict-make-control-lists]
+%doucumenttask%               ;xslt  inc-dict-make-control-lists  ""  %input%  %output%
+;
+[xinc-dict-nav | inc-dict-nav]
+%doucumenttask%               ;xslt  inc-dict-nav  "last=count(//lxGroup)"  %input%  %output%
+;
+[xinc-dict-nonhom-serial-nodes | inc-dict-nonhom-serial-nodes]
+%doucumenttask%               ;xslt  inc-dict-nonhom-serial-nodes  ""  %input%  %output%
+;
+[xinc-dict-PWxhtml-control-maker | inc-dict-PWxhtml-control-maker]
+%doucumenttask%               ;xslt  inc-dict-PWxhtml-control-maker  ""  %input%  %output%
+;
+[xinc-dict-sense-hom | inc-dict-sense-hom]
+%doucumenttask%               ;xslt  inc-dict-sense-hom  "spacebeforehom=''"  %input%  %output%
+;
+[xinc-dict-sense-hom1 | inc-dict-sense-hom1]
+%doucumenttask%               ;xslt  inc-dict-sense-hom1  "spacebeforehom=''"  %input%  %output%
+;
+[xinc-dict-table | inc-dict-table]
+%doucumenttask%               ;xslt  inc-dict-table  ""  %input%  %output%
+;
+[xinc-dict-xhtml-write-page | inc-dict-xhtml-write-page]
+%doucumenttask%               ;xslt  inc-dict-xhtml-write-page  ""  %input%  %output%
+;
+[xinc-file2uri | inc-file2uri]
+%doucumenttask%               ;xslt  inc-file2uri  ""  %input%  %output%
+;
+[xinc-find-replace | inc-find-replace]
+%doucumenttask%               ;xslt  inc-find-replace  "find='' replace=''"  %input%  %output%
+;
+[xinc-four-controls-lists | inc-four-controls-lists]
+%doucumenttask%               ;xslt  inc-four-controls-lists  ""  %input%  %output%
+;
+[xinc-generic-grouping-start-with-list-add-attribs | inc-generic-grouping-start-with-list-add-attribs]
+%doucumenttask%               ;xslt  inc-generic-grouping-start-with-list-add-attribs  "parentnode='' groupnodelist=''"  %input%  %output%
+;
+[xinc-generic-grouping-start-with-list | inc-generic-grouping-start-with-list]
+%doucumenttask%               ;xslt  inc-generic-grouping-start-with-list  "parentnode='' groupnodelist=''"  %input%  %output%
+;
+[xinc-generic-html-with-match-func | inc-generic-html-with-match-func]
+%doucumenttask%               ;xslt  inc-generic-html-with-match-func  "precontext='' postcontext='' locref=''"  %input%  %output%
+;
+[xinc-generic-html | inc-generic-html]
+%doucumenttask%               ;xslt  inc-generic-html  "precontext='' postcontext='' locref='' css=''"  %input%  %output%
+;
+[xinc-html-table-head | inc-html-table-head]
+%doucumenttask%               ;xslt  inc-html-table-head  "columns='' collabel1='' collabel2='' collabel3='' collabel4='' collabel5='' collabel6=''"  %input%  %output%
+;
+[xinc-html-table | inc-html-table]
+%doucumenttask%               ;xslt  inc-html-table  "table=''"  %input%  %output%
+;
+[xinc-import-textlist | inc-import-textlist]
+%doucumenttask%               ;xslt  inc-import-textlist  "sourcetexturi=''"  %input%  %output%
+;
+[xinc-list2xml-1-3ele | inc-list2xml-1-3ele]
+%doucumenttask%               ;xslt  inc-list2xml-1-3ele  ""  %input%  %output%
+;
+[xinc-list2xml-1ele2attb | inc-list2xml-1ele2attb]
+%doucumenttask%               ;xslt  inc-list2xml-1ele2attb  ""  %input%  %output%
+;
+[xinc-list2xml-2elevalue | inc-list2xml-2elevalue]
+%doucumenttask%               ;xslt  inc-list2xml-2elevalue  "group='' groupclass='' data=''"  %input%  %output%
+;
+[xinc-list2xml-3attrib | inc-list2xml-3attrib]
+%doucumenttask%               ;xslt  inc-list2xml-3attrib  ""  %input%  %output%
+;
+[xinc-list2xml-elem-n-value | inc-list2xml-elem-n-value]
+%doucumenttask%               ;xslt  inc-list2xml-elem-n-value  ""  %input%  %output%
+;
+[xinc-list2xml-elevalue | inc-list2xml-elevalue]
+%doucumenttask%               ;xslt  inc-list2xml-elevalue  ""  %input%  %output%
+;
+[xinc-list2xml-xattrib | inc-list2xml-xattrib]
+%doucumenttask%               ;xslt  inc-list2xml-xattrib  ""  %input%  %output%
+;
+[xinc-list2xml | inc-list2xml]
+%doucumenttask%               ;xslt  inc-list2xml  ""  %input%  %output%
+;
+[xinc-lower-remove-accents | inc-lower-remove-accents]
+%doucumenttask%               ;xslt  inc-lower-remove-accents  "translateaccents='yes' customfind='' customreplace='' removechar=''"  %input%  %output%
+;
+[xinc-nav-links | inc-nav-links]
+%doucumenttask%               ;xslt  inc-nav-links  ""  %input%  %output%
+;
+[xinc-remove-square-brackets | inc-remove-square-brackets]
+%doucumenttask%               ;xslt  inc-remove-square-brackets  ""  %input%  %output%
+;
+[xinc-scr-html5-write-page | inc-scr-html5-write-page]
+%doucumenttask%               ;xslt  inc-scr-html5-write-page  "copyright='2013 SIL Philippines'"  %input%  %output%
+;
+[xinc-strip-bar-codes | inc-strip-bar-codes]
+%doucumenttask%               ;xslt  inc-strip-bar-codes  ""  %input%  %output%
+;
+[xinc-usx2html5-write-page | inc-usx2html5-write-page]
+%doucumenttask%               ;xslt  inc-usx2html5-write-page  "copyright='2013 SIL Philippines'"  %input%  %output%
+;
+[xinc-xhtml-write-page | inc-xhtml-write-page]
+%doucumenttask%               ;xslt  inc-xhtml-write-page  ""  %input%  %output%
+;
+[xinclude-text-in-verse | include-text-in-verse]
+%doucumenttask%               ;xslt  include-text-in-verse  ""  %input%  %output%
+;
+[xindex-get-fields | index-get-fields]
+%doucumenttask%               ;xslt  index-get-fields  "sourcetextstring=''"  %input%  %output%
+;
+[xIndex-group-n-sort | Index-group-n-sort]
+%doucumenttask%               ;xslt  Index-group-n-sort  "collationname='' groupingfield='ie' secondarysort='lx'"  %input%  %output%
+;
+[xindex2split-html | index2split-html]
+%doucumenttask%               ;xslt  index2split-html  "index='' path='' splitelement='' appbuild='' target='' framehost='' posturl='.html'"  %input%  %output%
+;
+[xindex_letters_for_js | index_letters_for_js]
+%doucumenttask%               ;xslt  index_letters_for_js  "spacedlist=''"  %input%  %output%
+;
+[xindex_letters_head | index_letters_head]
+%doucumenttask%               ;xslt  index_letters_head  "curlang=''"  %input%  %output%
+;
+[xiso | iso]
+%doucumenttask%               ;xslt  iso  "path=''"  %input%  %output%
+;
+[xjs-lx | js-lx]
+%doucumenttask%               ;xslt  js-lx  "headwordfields=''"  %input%  %output%
+;
+[xkmk-vocab2-html | kmk-vocab2-html]
+%doucumenttask%               ;xslt  kmk-vocab2-html  ""  %input%  %output%
+;
+[xkmk-vocabintro-html | kmk-vocabintro-html]
+%doucumenttask%               ;xslt  kmk-vocabintro-html  ""  %input%  %output%
+;
+[xlink-gen-cct-check | link-gen-cct-check]
+%doucumenttask%               ;xslt  link-gen-cct-check  "basepath='' sourcelist='' targetlist=''"  %input%  %output%
+;
+[xlink-gen-cct | link-gen-cct]
+%doucumenttask%               ;xslt  link-gen-cct  "basepath='' sourcelist='' namelink='' targetlist=''"  %input%  %output%
+;
+[xlist-maker | list-maker]
+%doucumenttask%               ;xslt  list-maker  "itemlist='' before='' after='' find='' replace=''"  %input%  %output%
+;
+[xlist2xml2 | list2xml2]
+%doucumenttask%               ;xslt  list2xml2  "sourcetexturi='' root='' rootclass=''"  %input%  %output%
+;
+[xlxGroup-no-mn | lxGroup-no-mn]
+%doucumenttask%               ;xslt  lxGroup-no-mn  ""  %input%  %output%
+;
+[xmark-sense-in-fields | mark-sense-in-fields]
+%doucumenttask%               ;xslt  mark-sense-in-fields  "findsenseinelementlist=''"  %input%  %output%
+;
+[xMDF-PWclass | MDF-PWclass]
+%doucumenttask%               ;xslt  MDF-PWclass  ""  %input%  %output%
+;
+[xMDF-PWlang | MDF-PWlang]
+%doucumenttask%               ;xslt  MDF-PWlang  ""  %input%  %output%
+;
+[xMDF-PWmatch | MDF-PWmatch]
+%doucumenttask%               ;xslt  MDF-PWmatch  ""  %input%  %output%
+;
+[xMDF2PWxhtml | MDF2PWxhtml]
+%doucumenttask%               ;xslt  MDF2PWxhtml  ""  %input%  %output%
+;
+[xnormalizeallspace | normalizeallspace]
+%doucumenttask%               ;xslt  normalizeallspace  ""  %input%  %output%
+;
+[xParagraphtext2xmll | Paragraphtext2xmll]
+%doucumenttask%               ;xslt  Paragraphtext2xmll  "sourcetexturi='' elementname='p' preservespace='yes'"  %input%  %output%
+;
+[xplb-dic-index-print | plb-dic-index-print]
+%doucumenttask%               ;xslt  plb-dic-index-print  ""  %input%  %output%
+;
+[xplb-dic-print | plb-dic-print]
+%doucumenttask%               ;xslt  plb-dic-print  "dd1='' dd2=''"  %input%  %output%
+;
+[xPSPad-def-maker-all | PSPad-def-maker-all]
+%doucumenttask%               ;xslt  PSPad-def-maker-all  "projectpath='D:\All-SIL-Publishing\vimod-pub\data\utilities\update_PSPad_def' basemacros='pspad-base-macros.txt' baseclips='pspad-base-clips.txt' xsltlist='xsltfiles.txt' option='b'"  %input%  %output%
+;
+[xPSPad-def-maker | PSPad-def-maker]
+%doucumenttask%               ;xslt  PSPad-def-maker  "outpath='D:\All-SIL-Publishing\vimod-pub\resources\PSPad\temp' seqno=''"  %input%  %output%
+;
+[xPWxhtml2DFM | PWxhtml2DFM]
+%doucumenttask%               ;xslt  PWxhtml2DFM  ""  %input%  %output%
+;
+[xPWxhtml2DFM2 | PWxhtml2DFM2]
+%doucumenttask%               ;xslt  PWxhtml2DFM2  ""  %input%  %output%
+;
+[xreap-build | reap-build]
+%doucumenttask%               ;xslt  reap-build  "outpath='D:\reap\reap-build-' filetypeextensions='.pdf' omitifcontains=''"  %input%  %output%
+;
+[xreap-csv2xml-collections | reap-csv2xml-collections]
+%doucumenttask%               ;xslt  reap-csv2xml-collections  "sourcetexturi='' group='metadata-local'"  %input%  %output%
+;
+[xreap-csv2xml-collections0 | reap-csv2xml-collections0]
+%doucumenttask%               ;xslt  reap-csv2xml-collections0  "sourcetexturi='' group='metadata'"  %input%  %output%
+;
+[xreap-csv2xml | reap-csv2xml]
+%doucumenttask%               ;xslt  reap-csv2xml  "sourcetexturi='' group='item' sepvar1='
+'"  %input%  %output%
+;
+[xreap-csv2xml2 | reap-csv2xml2]
+%doucumenttask%               ;xslt  reap-csv2xml2  "sourcetexturi='' group='metadata' sepvar1='\r\n'"  %input%  %output%
+;
+[xreap-csv2xml3 | reap-csv2xml3]
+%doucumenttask%               ;xslt  reap-csv2xml3  "sourcetexturi1='' sourcetexturi2='' sourcetexturi3='' group='metadata'"  %input%  %output%
+;
+[xreap-group | reap-group]
+%doucumenttask%               ;xslt  reap-group  ""  %input%  %output%
+;
+[xreap-map-names | reap-map-names]
+%doucumenttask%               ;xslt  reap-map-names  ""  %input%  %output%
+;
+[xreap-select | reap-select]
+%doucumenttask%               ;xslt  reap-select  "filetypeextensions='.pdf .zip' omitifcontains='donotcopy'"  %input%  %output%
+;
+[xreap-subdir | reap-subdir]
+%doucumenttask%               ;xslt  reap-subdir  ""  %input%  %output%
+;
+[xreap2plb | reap2plb]
+%doucumenttask%               ;xslt  reap2plb  ""  %input%  %output%
+;
+[xremove-node | remove-node]
+%doucumenttask%               ;xslt  remove-node  "node2remove=''"  %input%  %output%
+;
+[xsfm2xml-dict | sfm2xml-dict]
+%doucumenttask%               ;xslt  sfm2xml-dict  "sourcetexturi='' tablemarker='tb'"  %input%  %output%
+;
+[xsfm2xml-dict2 | sfm2xml-dict2]
+%doucumenttask%               ;xslt  sfm2xml-dict2  "sourcetexturi='' tablemarker='tb' illegal='_-+=!@#$%^&'"  %input%  %output%
+;
+[xsfm2xml-general | sfm2xml-general]
+%doucumenttask%               ;xslt  sfm2xml-general  "sourcetexturi=''"  %input%  %output%
+;
+[xsimplehtmlscr-index-iso | simplehtmlscr-index-iso]
+%doucumenttask%               ;xslt  simplehtmlscr-index-iso  "cssfile='../css/mobile.css'"  %input%  %output%
+;
+[xsimplehtmlscr-index-starter | simplehtmlscr-index-starter]
+%doucumenttask%               ;xslt  simplehtmlscr-index-starter  "title=''"  %input%  %output%
+;
+[xsimplehtmlscr-index | simplehtmlscr-index]
+%doucumenttask%               ;xslt  simplehtmlscr-index  "parampath=''"  %input%  %output%
+;
+[xtab-css2attribset | tab-css2attribset]
+%doucumenttask%               ;xslt  tab-css2attribset  "sourcetexturi=''"  %input%  %output%
+;
+[xtab-css2css-match | tab-css2css-match]
+%doucumenttask%               ;xslt  tab-css2css-match  "sourcetexturi=''"  %input%  %output%
+;
+[xtab-css2css | tab-css2css]
+%doucumenttask%               ;xslt  tab-css2css  "sourcetexturi=''"  %input%  %output%
+;
+[xtab-css2xml | tab-css2xml]
+%doucumenttask%               ;xslt  tab-css2xml  "sourcetexturi=''"  %input%  %output%
+;
+[xtemp-fo-class-attribs | temp-fo-class-attribs]
+%doucumenttask%               ;xslt  temp-fo-class-attribs  ""  %input%  %output%
+;
+[xtemp-match | temp-match]
+%doucumenttask%               ;xslt  temp-match  ""  %input%  %output%
+;
+[xtest-css-to-attrib-set | test-css-to-attrib-set]
+%doucumenttask%               ;xslt  test-css-to-attrib-set  "sourcetexturi='' output=''"  %input%  %output%
+;
+[xtest-sql-odbc | test-sql-odbc]
+%doucumenttask%               ;xslt  test-sql-odbc  "driver='sun.jdbc.odbc.JdbcOdbcDriver' database='jdbc:odbc:test' user='' password=''"  %input%  %output%
+;
+[xtoc-cookbook | toc-cookbook]
+%doucumenttask%               ;xslt  toc-cookbook  ""  %input%  %output%
+;
+[xtoc-pittman2 | toc-pittman2]
+%doucumenttask%               ;xslt  toc-pittman2  "maxdots=36 multiplier=0.34"  %input%  %output%
+;
+[xtoc | toc]
+%doucumenttask%               ;xslt  toc  ""  %input%  %output%
+;
+[xUnityStatement | UnityStatement]
+%doucumenttask%               ;xslt  UnityStatement  ""  %input%  %output%
+;
+[xusfm-chap-before-after-Copy | usfm-chap-before-after-Copy]
+%doucumenttask%               ;xslt  usfm-chap-before-after-Copy  ""  %input%  %output%
+;
+[xusfm-chap-before-after | usfm-chap-before-after]
+%doucumenttask%               ;xslt  usfm-chap-before-after  "usxpath=''"  %input%  %output%
+;
+[xusx-add-book-attrib | usx-add-book-attrib]
+%doucumenttask%               ;xslt  usx-add-book-attrib  ""  %input%  %output%
+;
+[xusx-add-text-wrapper | usx-add-text-wrapper]
+%doucumenttask%               ;xslt  usx-add-text-wrapper  ""  %input%  %output%
+;
+[xusx-book-seq-func | usx-book-seq-func]
+%doucumenttask%               ;xslt  usx-book-seq-func  "bookorderfile='D:\All-SIL-Publishing\vimod-pub\resources\ParatextIntergration\book-chaps.txt'"  %input%  %output%
+;
+[xusx-chap-before-after-func | usx-chap-before-after-func]
+%doucumenttask%               ;xslt  usx-chap-before-after-func  ""  %input%  %output%
+;
+[xusx-chap-before-after | usx-chap-before-after]
+%doucumenttask%               ;xslt  usx-chap-before-after  ""  %input%  %output%
+;
+[xusx-chap-grp2simplehtmlscr | usx-chap-grp2simplehtmlscr]
+%doucumenttask%               ;xslt  usx-chap-grp2simplehtmlscr  "parampath='' buildpath='' title='' dir='' langname='' iso='' vol='nt' introword='Introduction' copyright='2013 Wycliffe'"  %input%  %output%
+;
+[xusx-chap-grp2simplehtmlscr2 | usx-chap-grp2simplehtmlscr2]
+%doucumenttask%               ;xslt  usx-chap-grp2simplehtmlscr2  "parampath='' buildpath='' title='' dir='' langname='' iso='' bookorderlist=unparsed-text(document(../../resources/book-chaps.txt)) vol='nt' introword='Introduction' copyright='2013 Wycliffe'"  %input%  %output%
+;
+[xusx-chap-grp2simplehtmlscr3 | usx-chap-grp2simplehtmlscr3]
+%doucumenttask%               ;xslt  usx-chap-grp2simplehtmlscr3  "parampath='' buildpath='' title='' dir='' langname='' iso='' vol='nt' introword='Introduction' copyright='2013 Wycliffe' subrootlink=no"  %input%  %output%
+;
+[xusx-verse-text-elem | usx-verse-text-elem]
+%doucumenttask%               ;xslt  usx-verse-text-elem  ""  %input%  %output%
+;
+[xusx1step-test | usx1step-test]
+%doucumenttask%               ;xslt  usx1step-test  "parampath='' buildpath='' title='' dir='' langname='' iso='' bookorderlist=unparsed-text(document(../../resources/book-chaps.txt)) vol='nt' introword='Introduction' copyright='2013 Wycliffe' path='' files=''"  %input%  %output%
+;
+[xusx2dbs_index | usx2dbs_index]
+%doucumenttask%               ;xslt  usx2dbs_index  "parampath=''"  %input%  %output%
+;
+[xusx2dbs_iso | usx2dbs_iso]
+%doucumenttask%               ;xslt  usx2dbs_iso  "cssfile='../css/mobile.css'"  %input%  %output%
+;
+[xusx2simplehtmlscr-iPad | usx2simplehtmlscr-iPad]
+%doucumenttask%               ;xslt  usx2simplehtmlscr-iPad  "parampath='' buildpath='' title='' dir='' langname='' iso='' bookorderlist=unparsed-text(document(../../resources/book-chaps.txt)) vol='nt' introword='Introduction' copyright='2013 Wycliffe'"  %input%  %output%
+;
+[xusx2usx-chap-grp | usx2usx-chap-grp]
+%doucumenttask%               ;xslt  usx2usx-chap-grp  ""  %input%  %output%
+;
+[xusx2usx-chap-grp2 | usx2usx-chap-grp2]
+%doucumenttask%               ;xslt  usx2usx-chap-grp2  "path='' files='' groupnodelist='' bookorderfile='D:\All-SIL-Publishing\vimod-pub\resources\ParatextIntergration\book-chaps.txt'"  %input%  %output%
+;
+[xusx2usxsimp | usx2usxsimp]
+%doucumenttask%               ;xslt  usx2usxsimp  ""  %input%  %output%
+;
+[xusx2verseseq | usx2verseseq]
+%doucumenttask%               ;xslt  usx2verseseq  ""  %input%  %output%
+;
+[xusxbooks | usxbooks]
+%doucumenttask%               ;xslt  usxbooks  ""  %input%  %output%
+;
+[xusxsimp2dbs | usxsimp2dbs]
+%doucumenttask%               ;xslt  usxsimp2dbs  "vol='nt' parampath=''"  %input%  %output%
+;
+[xusxsimple2html-haiola-like | usxsimple2html-haiola-like]
+%doucumenttask%               ;xslt  usxsimple2html-haiola-like  "parampath='' outpath='' vol='nt' intro='Introduction' copyright='2013 Wycliffe'"  %input%  %output%
+;
+[xusxsimple2simplehtmlscr | usxsimple2simplehtmlscr]
+%doucumenttask%               ;xslt  usxsimple2simplehtmlscr  "parampath='' outpath='' vol='nt' copyright='2013 Wycliffe'"  %input%  %output%
+;
+[xvimod-spinoff-project | vimod-spinoff-project]
+%doucumenttask%               ;xslt  vimod-spinoff-project  "projectpath='' outpath=''"  %input%  %output%
+;
+[xvimodincludes | vimodincludes]
+%doucumenttask%               ;xslt  vimodincludes  "outpath='D:\output\reap'"  %input%  %output%
+;
+[xvimodmenuparser | vimodmenuparser]
+%doucumenttask%               ;xslt  vimodmenuparser  "sourcetexturi='' outpath='D:\output'"  %input%  %output%
+;
+[xvocab-intro-match | vocab-intro-match]
+%doucumenttask%               ;xslt  vocab-intro-match  ""  %input%  %output%
+;
+[xvocab2-match | vocab2-match]
+%doucumenttask%               ;xslt  vocab2-match  ""  %input%  %output%
+;
+[xvp2html5 | vp2html5]
+%doucumenttask%               ;xslt  vp2html5  "sourcetexturi=''"  %input%  %output%
+;
+[xvp2xml | vp2xml]
+%doucumenttask%               ;xslt  vp2xml  "sourcetexturi=''"  %input%  %output%
+;
+[xxhtml-add-class2xml | xhtml-add-class2xml]
+%doucumenttask%               ;xslt  xhtml-add-class2xml  ""  %input%  %output%
+;
+[xxhtml-add-class2xml1 | xhtml-add-class2xml1]
+%doucumenttask%               ;xslt  xhtml-add-class2xml1  ""  %input%  %output%
+;
+[xxhtml2fo | xhtml2fo]
+%doucumenttask%               ;xslt  xhtml2fo  "page-width='' page-height='' page-margin-top='' page-margin-bottom='' page-margin-left='' page-margin-right='' page-header-margin='' page-footer-margin='' title-print-in-header='' page-number-print-in-footer='' column-count='' column-gap='' writing-mode='' text-align='' hyphenate='' ul-label-1='' ul-label-2='' ul-label-3='' ol-label-1='' ol-label-2='' ol-label-3=''"  %input%  %output%
+;
+[xXlingPaper-split-interlin-line | XlingPaper-split-interlin-line]
+%doucumenttask%               ;xslt  XlingPaper-split-interlin-line  "splitabout='' splitlength=''"  %input%  %output%
+;
+[xxml2PW-xhtml | xml2PW-xhtml]
+%doucumenttask%               ;xslt  xml2PW-xhtml  "precontext='' postcontext='' table='' hvostart=10000 collabel1='' collabel2='' collabel3='' collabel4='' locref='' pagination=''"  %input%  %output%
+;
+[x | ]
+%doucumenttask%               ;xslt    "projectpath='D:\All-SIL-Publishing\vimod-pub\data\utilities\update_PSPad_def' basemacros='pspad-base-macros.txt' baseclips='pspad-base-clips.txt' xsltlist='xsltfiles.txt' option='b'"  %input%  %output%
+;

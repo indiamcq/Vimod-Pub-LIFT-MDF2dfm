@@ -1,0 +1,5 @@
+# dfm-mdfxml2dfm-data.menu
+Convert mdf-xml to word List DFM input  ;tasklist dfm-mdf-xml2dfm.tasks wl
+Convert mdf-xml to min DFM input        ;tasklist dfm-mdf-xml2dfm.tasks min
+Convert mdf-xml to mid DFM input        ;tasklist dfm-mdf-xml2dfm.tasks mid
+Convert mdf-xml to full DFM input       ;tasklist dfm-mdf-xml2dfm.tasks full

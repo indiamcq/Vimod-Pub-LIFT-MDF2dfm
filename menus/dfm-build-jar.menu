@@ -1,0 +1,7 @@
+# dfm.menu
+#Convert xml to DFM via mdf input        ;tasklist dfm-mdf-xml2dfm.tasks wl
+Build DFM wl jar files                  ;tasklist dfm-build-jar.tasks wl
+Build DFM min jar files                 ;tasklist dfm-build-jar.tasks min
+Build DFM mid jar files                 ;tasklist dfm-build-jar.tasks mid
+Build DFM full jar files                ;tasklist dfm-build-jar.tasks full
+

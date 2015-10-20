@@ -23,30 +23,35 @@ Open the file **data\Dict-dfm\xxx\project.tasks** in a text editor. (If you use 
 
 ````
 # project.tasks
-schema type         ;var schema mdf
-iso code            ;var iso "**xxx**"
-languages           ;var langs "**3**"
-title               ;var voltitle "**LanguageName-English-NationalLangName** Dictionary"
-languages           ;var langname "**LanguageName**"
-languages           ;var langname2 "English"
-languages           ;var langname3 "**NationalLangName**"
+** schema type      ;var schema "mdf"
+iso code            ;var iso "xxx"
+languages           ;var langs "3"
+title               ;var voltitle "LanguageName-English-NationalLangName Dictionary"
+languages           ;var langname "LanguageName"
+** languages        ;var langname2 "English"
+languages           ;var langname3 "NationalLangName"
 languages           ;var langname4 ""
-languages           ;var compiler "**FirstName LastName**"
-Publisher           ;var publisher "**© SIL International  http://www.sil.org**"
-publication date    ;var pubdate **2015**
-second language     ;var iso2 eng
-third language      ;var iso3 "%%xx3**"
+languages           ;var compiler "FirstName LastName"
+Publisher           ;var publisher "© SIL International  http://www.sil.org"
+publication date    ;var pubdate 2015
+second language     ;var iso2 "eng"
+third language      ;var iso3 "xx3"
 fourth language     ;var iso4 ""
-sourcefile          ;var liftfile "%projectpath%\**xxx-full**.lift"
-mdf xml file        ;var xmlfile "%projectpath%\%iso%.xml"
-vernacular          ;var vernacular "%iso%"
-nationl lang code   ;var national "**x2**"
-regional lang code  ;var regional ""
-regional2 lang code ;var regional2 ""
-regional3 lang code ;var regional3 ""
+sourcefile          ;var liftfile "%projectpath%\xxx-full.lift"
+** mdf xml file     ;var xmlfile "%projectpath%\%iso%.xml"
+** vernacular       ;var vernacular "%iso%"
 
 create project.xslt ;projectxslt
 ````
+
+Go through and edit each line by modifying what is in double quotes. Leave all the rest intact. Though if you want to add more information before the semi-colon that is also okay.
+
+The lines starting with \*\* do not need to be edited.
+
+Make sure you enter the source file variable **liftfile**. It does not have to be in the **%projectpath%** folder it can be anywhere on your computer.
+
+**%projectpath%** for the project refers to the absolute path of the relative path, it is automatically specified, you do not need to do it:
+**data\Dict-dfm\xxx\**
 
 ## Starting Vimod-Pub
 
@@ -54,4 +59,14 @@ create project.xslt ;projectxslt
 * Type in `pub` and press ENTER.
 * Choose the menu item letter **a** and press ENTER
 * Continue to navigate the menu system untill you are in the project.
+
+## Steps for making DFM JAR file
+
+This is a flexible build system, that has three outputs. 
+
+* A simple word list output
+* A full dictionary with search on key words
+* A full dictionary with search on all words
+
+The first two are the two recommended version to use. There is also a possibility of making a minimal dictionary that omits example sentences, but those options are commented out in the relevant files.
 

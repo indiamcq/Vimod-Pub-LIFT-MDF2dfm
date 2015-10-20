@@ -1,0 +1,8 @@
+# project.menu
+# project.menu
+Lift to DFM menu wl only                ;commonmenu dfm-lift2dfm-data.menu
+dfm-lift2mdf-xml.menu                   ;commonmenu dfm-lift2mdf-xml.menu
+                                        ;menublank
+dfm-mdfxml2dfm-data.menu                ;commonmenu dfm-mdfxml2dfm-data.menu
+                                        ;menublank
+DFM menu                                ;commonmenu dfm.menu

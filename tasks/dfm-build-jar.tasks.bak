@@ -1,0 +1,32 @@
+# dfm-build-jar.tasks
+get var                                 ;projectvar
+reset error                             ;var indexerror 0
+get size                                ;var size %~2
+set out file name                       ;var isostring "%iso%%iso2%%iso3%%iso4%"
+zip file                                ;var zipfile "%projectpath%\dfm_%isostring%_%size%.zip"
+echo user command                       ;var echousercommand on
+
+
+# run some checks of directories and files                                                                             
+check                                   ;checkdir "%projectpath%\%langs%\%size%\dictionary\"
+check                                   ;checkdir "%projectpath%\%langs%\%size%\JAR\"
+#notice                                  ;command "echo Clean up previous build files"
+check                                   ;ifexist "%projectpath%\%langs%\%size%\dictionary\*.*" del "" "/q"
+check                                   ;ifexist "%projectpath%\%langs%\%size%\JAR\*.*" del
+remove zip                              ;ifexist "%zipfile%" del
+copy files                              ;ifnotexist "%projectpath%\%langs%\%size%\dictionary\DictionaryForMIDs.properties" copy "%projectpath%\%langs%\%size%\DictionaryForMIDs.properties"
+
+first jar step                          ;command "java -jar %basepath%\tools\dfm\DfM-Creator.jar --DictionaryGeneration  '%projectpath%\%langs%\%size%\Dictionary_input.txt' '%projectpath%\%langs%\%size%\dictionary' '%projectpath%\%langs%\%size%'"  "" "%projectpath%\%langs%\%size%\dictionary\directory1.csv"
+#first jar step                          ;command "java -jar '%basepath%\tools\dfm\DictionaryGeneration.jar' '%projectpath%\%langs%\%size%\Dictionary_input.txt' '%langs%\%size%\dictionary' '%langs%/%size%'"  "%projectpath%" "%projectpath%\%langs%\%size%\dictionary\directory1.csv"
+                                        ;echo "."
+run step 2                              ;command "java -jar '%basepath%\tools\dfm\JarCreator.jar' '%projectpath%/%langs%/%size%/dictionary' 'tools/dfm' '%projectpath%/%langs%/%size%/JAR'"  "" "%projectpath%/%langs%/%size%/JAR/DictionaryForMids_%isostring%_%size%.jar"
+
+rename jad                              ;ifexist "%projectpath%\%langs%\%size%\JAR\DictionaryForMIDs_%isostring%_%size%.jad" rename "dfm_%isostring%_%size%.jad"
+rename jar                              ;ifexist "%projectpath%\%langs%\%size%\JAR\DictionaryForMIDs_%isostring%_%size%.jar" rename "dfm_%isostring%_%size%.jar"
+
+# copy files
+copy files                              ;ifnotexist "%projectpath%\%langs%\%size%\jar\*.txt" copy "resources\ProjectSetup\dfm\files\*.txt"
+copy files                              ;ifnotexist "%projectpath%\%langs%\%size%\JAR\copyright.txt" copy "%projectpath%\copyright.txt"
+
+# make zip of all files                   ;command "'%basepath%\tools\Info-zip\zip.exe' '%zipfile%' '*.*'" "%projectpath%\%langs%\%size%\JAR" "%zipfile%" 
+open path                               ;start "Explorer" "%projectpath%\%langs%\%size%\JAR"
