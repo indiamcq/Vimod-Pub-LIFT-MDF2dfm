@@ -31,13 +31,13 @@
             <xsl:param name="langcode"/>
             <xsl:choose>
                   <xsl:when test="$langcode = 'en'">
-                        <xsl:text>e</xsl:text>
+                        <xsl:text>v</xsl:text>
                   </xsl:when>
                   <xsl:when test="$langcode = $national">
                         <xsl:text>n</xsl:text>
                   </xsl:when>
                   <xsl:when test="$langcode = $vernacular">
-                        <xsl:text>v</xsl:text>
+                        <xsl:text>e</xsl:text>
                   </xsl:when>
                   <xsl:when test="$langcode = $regional">
                         <xsl:text>r</xsl:text>
