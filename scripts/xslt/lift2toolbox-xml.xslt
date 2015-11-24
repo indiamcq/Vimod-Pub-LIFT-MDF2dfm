@@ -30,7 +30,7 @@
       <xsl:function name="f:langabbrev">
             <xsl:param name="langcode"/>
             <xsl:choose>
-                  <xsl:when test="$langcode = 'en'">
+                   <xsl:when test="$langcode = $analysislang">
                         <xsl:text>e</xsl:text>
                   </xsl:when>
                   <xsl:when test="$langcode = $national">
